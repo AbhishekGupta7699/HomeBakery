@@ -31,6 +31,279 @@ h6 {
   color: var(--dark) !important;
 }
 
+/* ===== FEEDBACK WIDGET - COPY FROM HERE ===== */
+
+    .feedback-widget {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 9999;
+    }
+
+    /* Hidden checkbox for toggle */
+    .feedback-toggle-checkbox {
+      display: none;
+    }
+
+    /* Floating trigger button */
+    .feedback-toggle-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), #ff8e8e);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.45);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      z-index: 2;
+      margin-left: auto;
+    }
+
+    .feedback-toggle-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 28px rgba(255, 107, 107, 0.55);
+    }
+
+    .feedback-toggle-btn svg {
+      fill: white;
+      width: 26px;
+      height: 26px;
+      transition: transform 0.3s ease;
+    }
+
+    /* The chat icon */
+    .icon-chat {
+      display: block;
+    }
+
+    .icon-close {
+      display: none;
+    }
+
+    /* Form panel */
+    .feedback-panel {
+      position: absolute;
+      bottom: 75px;
+      right: 0;
+      width: 340px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px) scale(0.95);
+      transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
+      pointer-events: none;
+    }
+
+    /* When checkbox is checked */
+    .feedback-toggle-checkbox:checked ~ .feedback-panel {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+      pointer-events: all;
+    }
+
+    .feedback-toggle-checkbox:checked ~ .feedback-toggle-btn .icon-chat {
+      display: none;
+    }
+
+    .feedback-toggle-checkbox:checked ~ .feedback-toggle-btn .icon-close {
+      display: block;
+    }
+
+    .feedback-toggle-checkbox:checked ~ .feedback-toggle-btn {
+      background: linear-gradient(135deg, var(--dark), #3d4063);
+      box-shadow: 0 6px 20px rgba(45, 48, 71, 0.4);
+    }
+
+    /* Card styling */
+    .feedback-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 12px;
+      box-shadow: 0 12px 40px rgba(45, 48, 71, 0.15);
+    }
+
+    .feedback-card .feedback-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--dark);
+      text-align: center;
+      margin-bottom: 8px;
+      letter-spacing: 0.3px;
+    }
+
+    .feedback-card .feedback-title span {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Textarea */
+    .feedback-textarea {
+      background-color: #f8f9fa;
+      color: var(--text);
+      height: 112px;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 10px 12px;
+      resize: none;
+      outline: none;
+      width: 100%;
+      font-size: 0.875rem;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feedback-textarea::placeholder {
+      color: #94a3b8;
+    }
+
+    .feedback-textarea:focus {
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.15);
+    }
+
+    /* Email input */
+    .feedback-input {
+      background-color: #f8f9fa;
+      color: var(--text);
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 10px 12px;
+      outline: none;
+      width: 100%;
+      font-size: 0.875rem;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feedback-input::placeholder {
+      color: #94a3b8;
+    }
+
+    .feedback-input:focus {
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.15);
+    }
+
+    /* Emoji / reaction buttons */
+    .feedback-emoji-btn {
+      background-color: #f8f9fa;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: border-color 0.3s ease, background-color 0.3s ease;
+      width: 100%;
+    }
+
+    .feedback-emoji-btn svg {
+      fill: #64748b;
+      transition: fill 0.3s ease;
+    }
+
+    .feedback-emoji-btn:hover {
+      border-color: var(--secondary);
+      background-color: rgba(78, 205, 196, 0.08);
+    }
+
+    .feedback-emoji-btn:hover svg {
+      fill: var(--secondary);
+    }
+
+    .feedback-emoji-btn:focus {
+      background-color: var(--secondary);
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.2);
+    }
+
+    .feedback-emoji-btn:focus svg {
+      fill: #ffffff;
+    }
+
+    /* Send button */
+    .feedback-send-btn {
+      background-color: #f8f9fa;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feedback-send-btn svg {
+      stroke: var(--primary);
+      transition: stroke 0.3s ease;
+    }
+
+    .feedback-send-btn:hover {
+      background: linear-gradient(135deg, var(--primary), #ff8e8e);
+      border-color: var(--primary);
+      box-shadow: 0 4px 14px rgba(255, 107, 107, 0.3);
+    }
+
+    .feedback-send-btn:hover svg {
+      stroke: #ffffff;
+    }
+
+    .feedback-send-btn:focus {
+      background: linear-gradient(135deg, var(--primary), #ff8e8e);
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
+    }
+
+    .feedback-send-btn:focus svg {
+      stroke: #ffffff;
+    }
+
+    /* Decorative dot on the card */
+    .feedback-card::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      right: 28px;
+      width: 10px;
+      height: 10px;
+      background: #ffffff;
+      border-left: 1px solid #e2e8f0;
+      border-top: 1px solid #e2e8f0;
+      transform: rotate(45deg);
+    }
+
+    /* ===== END FEEDBACK WIDGET ===== */
+
+    /* Demo page content */
+    .demo-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .demo-content h1 {
+      color: var(--dark);
+      font-weight: 700;
+    }
+
+    .demo-content p {
+      color: #64748b;
+    }
+
+    .demo-arrow {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
 .hero-section {
   background:
     linear-gradient(rgba(45, 48, 71, 0.9), rgba(45, 48, 71, 0.8)),
