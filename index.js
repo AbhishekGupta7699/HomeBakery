@@ -76,3 +76,14 @@ document
       }
     });
   });
+
+function selectMood(mood, btn) {
+  // Set hidden input value
+  document.getElementById("moodInput").value = mood;
+
+  // Highlight selected emoji
+  document
+    .querySelectorAll(".feedback-emoji-btn")
+    .forEach((b) => b.classList.remove("selected"));
+  btn.classList.add("selected");
+}
