@@ -1007,8 +1007,6 @@
       crossorigin="anonymous"
     ></script>
     <script>
-
-      
       const teamMembers = [
         {
           name: "Elena Moreau",
@@ -1118,44 +1116,29 @@
         form.reset();
       });
 
+      // ✅ No API key here anymore
       function brevoSubscribe() {
         const name = document.getElementById("nameInput").value.trim();
         const email = document.getElementById("emailInput").value.trim();
         const msg = document.getElementById("formMessage");
 
-        // Basic validation
         if (!name || !email) {
           msg.style.color = "red";
           msg.textContent = "⚠️ Please fill in both fields.";
           return;
         }
 
-        fetch("https://api.brevo.com/v3/contacts", {
+        fetch("/.netlify/functions/subscribe", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "api-key": "YOUR_BREVO_API_KEY", // ← paste your API key here
-          },
-          body: JSON.stringify({
-            email: email,
-            attributes: { FIRSTNAME: name },
-            listIds: [3], // ← paste your list ID number here
-            updateEnabled: true,
-          }),
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email }),
         })
-          .then((res) => {
-            if (res.ok || res.status === 204) {
-              msg.style.color = "green";
-              msg.textContent = "✅ Thanks for subscribing!";
-              document.getElementById("nameInput").value = "";
-              document.getElementById("emailInput").value = "";
-            } else {
-              return res.json().then((data) => {
-                msg.style.color = "red";
-                msg.textContent =
-                  "❌ " + (data.message || "Something went wrong.");
-              });
-            }
+          .then((res) => res.json())
+          .then((data) => {
+            msg.style.color = "green";
+            msg.textContent = "✅ Thanks for subscribing!";
+            document.getElementById("nameInput").value = "";
+            document.getElementById("emailInput").value = "";
           })
           .catch(() => {
             msg.style.color = "red";
