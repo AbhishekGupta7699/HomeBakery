@@ -1,3 +1,21 @@
+// Automatically set active nav link based on current page
+document.addEventListener("DOMContentLoaded", function () {
+    const currentPage = window.location.pathname.split("/").pop();
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    navLinks.forEach(link => {
+        const linkPage = link.getAttribute("href").split("/").pop();
+        
+        if (linkPage === currentPage) {
+            link.classList.add("active");
+        } else {
+            link.classList.remove("active");
+        }
+    });
+});
+
+
+
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {

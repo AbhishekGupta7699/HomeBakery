@@ -600,7 +600,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link active" href="index.html">Home</a>
+              <a class="nav-link" href="index.html">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="products.html">Products</a>
@@ -628,7 +628,7 @@
     </nav>
 
     <main class="main-content mt-5">
-      <h1 class="text-center mb-4">Previous Photo Gallery</h1>
+      <h1 class="text-center mb-4 mt-5">Previous Photo Gallery</h1>
 
       <div id="galleryContainer" class="gallery">
         <!-- Gallery items will be inserted here by JavaScript -->
@@ -829,8 +829,8 @@
             <div style="color: rgba(255, 255, 255, 0.8)">
               <p class="mb-2">
                 <i class="bi bi-geo-alt me-2"></i>
-                123 Baker Street<br />
-                San Francisco, CA 94107
+                S/301 Sarawgi Gali<br />
+                Near Clock Tower, Barabanki, Uttar Pradesh 225001
               </p>
               <p class="mb-2">
                 <i class="bi bi-clock me-2"></i>
@@ -839,7 +839,7 @@
               </p>
               <p class="mb-0">
                 <i class="bi bi-envelope me-2"></i>
-                hello@artisanbakery.com
+                abhishek.gupta7699@gmail.com
               </p>
             </div>
           </div>
@@ -863,6 +863,21 @@
 
     <!-- Custom JavaScript -->
     <script>
+      // Automatically set active nav link based on current page
+      document.addEventListener("DOMContentLoaded", function () {
+        const currentPage = window.location.pathname.split("/").pop();
+        const navLinks = document.querySelectorAll(".nav-link");
+
+        navLinks.forEach((link) => {
+          const linkPage = link.getAttribute("href").split("/").pop();
+
+          if (linkPage === currentPage) {
+            link.classList.add("active");
+          } else {
+            link.classList.remove("active");
+          }
+        });
+      });
       // Sample data mimicking the Model structure
       const galleryData = [
         {
