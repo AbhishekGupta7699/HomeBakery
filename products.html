@@ -1,0 +1,825 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Artisan Bakery - Fresh Baked Goods</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary: #ff6b6b;
+        --secondary: #4ecdc4;
+        --accent: #ffd166;
+        --dark: #2d3047;
+        --light: #f7f9fc;
+        --text: #333333;
+      }
+
+      body {
+        background-color: var(--light);
+        color: var(--text);
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Playfair Display", serif;
+        font-weight: 600;
+      }
+
+      .navbar-brand {
+        font-family: "Playfair Display", serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--dark) !important;
+      }
+
+      .btn-primary-custom {
+        background-color: var(--primary);
+        border-color: var(--primary);
+        color: white;
+        padding: 12px 30px;
+        font-weight: 600;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary-custom:hover {
+        background-color: #ff5252;
+        border-color: #ff5252;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+      }
+
+      .btn-secondary-custom {
+        background-color: transparent;
+        border: 2px solid white;
+        color: white;
+        padding: 12px 30px;
+        font-weight: 600;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+      }
+
+      .btn-secondary-custom:hover {
+        background-color: white;
+        color: var(--dark);
+        transform: translateY(-2px);
+      }
+
+      .hero {
+        background: linear-gradient(
+          135deg,
+          #ff9eb3 0%,
+          #ffd6e0 45%,
+          #81d4fa 100%
+        );
+        color: white;
+        padding: 110px 20px;
+        text-align: center;
+        border-radius: 24px;
+        margin: 100px 0 50px 0;
+        box-shadow: 0 15px 40px rgba(255, 158, 179, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: -40%;
+        left: -20%;
+        width: 500px;
+        height: 500px;
+        background: rgba(255, 255, 255, 0.18);
+        border-radius: 50%;
+        z-index: 1;
+      }
+
+      .hero h1 {
+        font-size: 3.2rem;
+        z-index: 2;
+        position: relative;
+      }
+
+      .card {
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s;
+        height: 100%;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .card img {
+        height: 200px;
+        object-fit: cover;
+        border-radius: 12px 12px 0 0;
+      }
+
+      .card-title {
+        color: var(--dark);
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+
+      .card-text {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+      }
+
+      .price {
+        color: var(--primary);
+        font-weight: 700;
+        font-size: 1.4em;
+      }
+
+      .btn-primary {
+        background-color: var(--primary);
+        border-color: var(--primary);
+        width: 100%;
+        font-weight: 600;
+        padding: 10px;
+        border-radius: 8px;
+        transition: all 0.3s;
+      }
+
+      .btn-primary:hover {
+        background-color: var(--secondary);
+        border-color: var(--secondary);
+        transform: scale(1.02);
+      }
+
+      .badge {
+        background-color: var(--accent) !important;
+        color: var(--dark);
+        font-weight: 600;
+      }
+
+      .category-filter {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 20px 0;
+      }
+
+      .filter-btn {
+        padding: 10px 20px;
+        border-radius: 25px;
+        border: 2px solid var(--primary);
+        background: white;
+        color: var(--primary);
+        cursor: pointer;
+        transition: all 0.3s;
+        font-weight: 600;
+      }
+
+      .filter-btn.active,
+      .filter-btn:hover {
+        background: var(--primary);
+        color: white;
+      }
+
+      .stats-card {
+        background: white;
+        border-radius: 10px;
+        padding: 30px;
+        text-align: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .stats-card i {
+        font-size: 2.5em;
+        color: var(--primary);
+        margin-bottom: 15px;
+      }
+
+      .stats-card h3 {
+        color: var(--dark);
+        font-weight: 700;
+        margin-bottom: 5px;
+      }
+
+      .stats-card p {
+        color: #666;
+        margin: 0;
+      }
+
+      footer {
+        background: linear-gradient(135deg, var(--dark), #1a1c2e);
+        color: white;
+        padding: 40px 0;
+        margin-top: 60px;
+      }
+
+      .section-title {
+        color: var(--primary);
+        font-weight: 700;
+        margin-bottom: 30px;
+      }
+
+      .toast-notification {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: white;
+        padding: 20px 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        display: none;
+        z-index: 9999;
+        border-left: 5px solid var(--secondary);
+      }
+
+      .toast-notification.show {
+        display: block;
+        animation: slideIn 0.3s ease-in-out;
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateX(400px);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm py-3"
+    >
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <i class="bi bi-basket2-fill me-2" style="color: var(--primary)"></i>
+          Artisan Bakery
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="products.html">Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="gallery.html">Gallery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#testimonials">Testimonials</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+          <a
+            href="https://www.ubereats.com"
+            target="_blank"
+            class="btn btn-primary-custom ms-lg-3 mt-3 mt-lg-0"
+          >
+            <i class="bi bi-bag-check me-2"></i>Order Now
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="container">
+      <div class="hero">
+        <div class="position-relative z-2">
+          <h1
+            class="display-3 fw-bold mb-3"
+            style="text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2)"
+          >
+            <i class="fas fa-cookie-bite me-3"></i>
+            Fresh From The Oven
+            <i class="fas fa-birthday-cake ms-3"></i>
+          </h1>
+          <p
+            class="lead fs-3 mb-4"
+            style="
+              text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+              max-width: 700px;
+              margin-left: auto;
+              margin-right: auto;
+            "
+          >
+            Warm, artisanal baked goods made daily with the finest ingredients
+          </p>
+          <button
+            onclick="
+              document
+                .getElementById('products-grid')
+                .scrollIntoView({ behavior: 'smooth' })
+            "
+            class="btn btn-light btn-lg px-5 py-3 fw-semibold shadow-sm"
+          >
+            <i class="fas fa-shopping-basket me-2"></i>
+            Browse Our Menu
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container py-4">
+      <!-- Stats Row -->
+      <div class="row mb-5">
+        <div class="col-md-4 mb-3">
+          <div class="stats-card">
+            <i class="fas fa-bread-slice"></i>
+            <h3 id="total-items">12</h3>
+            <p>Total Products</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="stats-card">
+            <i class="fas fa-layer-group"></i>
+            <h3>4</h3>
+            <p>Categories</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="stats-card">
+            <i class="fas fa-heart"></i>
+            <h3>500+</h3>
+            <p>Happy Customers</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Products Section -->
+      <div class="row" id="products">
+        <div class="col-12 text-center">
+          <h2 class="section-title">Our Delicious Menu</h2>
+        </div>
+
+        <!-- Category Filter -->
+        <div class="col-12">
+          <div class="category-filter">
+            <button class="filter-btn active" data-filter="all">
+              All Products
+            </button>
+            <button class="filter-btn" data-filter="breads">Breads</button>
+            <button class="filter-btn" data-filter="pastries">Pastries</button>
+            <button class="filter-btn" data-filter="desserts">Desserts</button>
+            <button class="filter-btn" data-filter="pies">Pies & Tarts</button>
+          </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="col-12">
+          <div class="row g-4" id="products-grid">
+            <!-- Product 1 -->
+            <div class="col-md-6 col-lg-3 product-item" data-category="breads">
+              <div class="card">
+                <img
+                  src="https://images.pexels.com/photos/1775043/pexels-photo-1775043.jpeg?auto=compress&cs=tinysrgb&w=400"
+                  class="card-img-top"
+                  alt="Sourdough Loaf"
+                />
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">Sourdough Loaf</h5>
+                  <p class="card-text text-muted">
+                    Traditional artisan sourdough bread with a crispy crust
+                  </p>
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-3"
+                  >
+                    <span class="price">$6.99</span>
+                    <span class="badge">Breads</span>
+                  </div>
+                  <button
+                    class="btn btn-primary mt-auto"
+                    onclick="addToCart('Sourdough Loaf', 6.99)"
+                  >
+                    <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div
+              class="col-md-6 col-lg-3 product-item"
+              data-category="pastries"
+            >
+              <div class="card">
+                <img
+                  src="https://images.pexels.com/photos/2135677/pexels-photo-2135677.jpeg?auto=compress&cs=tinysrgb&w=400"
+                  class="card-img-top"
+                  alt="Butter Croissant"
+                />
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">Butter Croissant</h5>
+                  <p class="card-text text-muted">
+                    Flaky, buttery French croissant baked fresh daily
+                  </p>
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-3"
+                  >
+                    <span class="price">$3.99</span>
+                    <span class="badge">Pastries</span>
+                  </div>
+                  <button
+                    class="btn btn-primary mt-auto"
+                    onclick="addToCart('Butter Croissant', 3.99)"
+                  >
+                    <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div
+              class="col-md-6 col-lg-3 product-item"
+              data-category="desserts"
+            >
+              <div class="card">
+                <img
+                  src="https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&w=400"
+                  class="card-img-top"
+                  alt="Red Velvet Cake"
+                />
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">Red Velvet Cake</h5>
+                  <p class="card-text text-muted">
+                    Rich red velvet cake with cream cheese frosting
+                  </p>
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-3"
+                  >
+                    <span class="price">$24.99</span>
+                    <span class="badge">Desserts</span>
+                  </div>
+                  <button
+                    class="btn btn-primary mt-auto"
+                    onclick="addToCart('Red Velvet Cake', 24.99)"
+                  >
+                    <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="col-md-6 col-lg-3 product-item" data-category="pies">
+              <div class="card">
+                <img
+                  src="https://images.pexels.com/photos/7790871/pexels-photo-7790871.jpeg"
+                  class="card-img-top"
+                  alt="Apple Pie"
+                />
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">Apple Pie</h5>
+                  <p class="card-text text-muted">
+                    Classic homemade apple pie with cinnamon
+                  </p>
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-3"
+                  >
+                    <span class="price">$18.99</span>
+                    <span class="badge">Pies & Tarts</span>
+                  </div>
+                  <button
+                    class="btn btn-primary mt-auto"
+                    onclick="addToCart('Apple Pie', 18.99)"
+                  >
+                    <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="col-md-6 col-lg-3 product-item" data-category="breads">
+              <div class="card">
+                <img
+                  src="https://images.pexels.com/photos/1775043/pexels-photo-1775043.jpeg?auto=compress&cs=tinysrgb&w=400&h=300"
+                  class="card-img-top"
+                  alt="Baguette"
+                />
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">French Baguette</h5>
+                  <p class="card-text text-muted">
+                    Authentic French baguette with crispy exterior
+                  </p>
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-3"
+                  >
+                    <span class="price">$4.50</span>
+                    <span class="badge">Breads</span>
+                  </div>
+                  <button
+                    class="btn btn-primary mt-auto"
+                    onclick="addToCart('French Baguette', 4.5)"
+                  >
+                    <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div
+              class="col-md-6 col-lg-3 product-item"
+              data-category="pastries"
+            >
+              <div class="card">
+                <img
+                  src="https://images.pexels.com/photos/3892469/pexels-photo-3892469.jpeg?auto=compress&cs=tinysrgb&w=400"
+                  class="card-img-top"
+                  alt="Danish Pastry"
+                />
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">Danish Pastry</h5>
+                  <p class="card-text text-muted">
+                    Sweet Danish with fruit filling and icing
+                  </p>
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-3"
+                  >
+                    <span class="price">$4.99</span>
+                    <span class="badge">Pastries</span>
+                  </div>
+                  <button
+                    class="btn btn-primary mt-auto"
+                    onclick="addToCart('Danish Pastry', 4.99)"
+                  >
+                    <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 7 -->
+            <div
+              class="col-md-6 col-lg-3 product-item"
+              data-category="desserts"
+            >
+              <div class="card">
+                <img
+                  src="https://images.pexels.com/photos/1055271/pexels-photo-1055271.jpeg?auto=compress&cs=tinysrgb&w=400"
+                  class="card-img-top"
+                  alt="Chocolate Cake"
+                />
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">Chocolate Cake</h5>
+                  <p class="card-text text-muted">
+                    Decadent chocolate layer cake with ganache
+                  </p>
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-3"
+                  >
+                    <span class="price">$26.99</span>
+                    <span class="badge">Desserts</span>
+                  </div>
+                  <button
+                    class="btn btn-primary mt-auto"
+                    onclick="addToCart('Chocolate Cake', 26.99)"
+                  >
+                    <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 8 -->
+            <div class="col-md-6 col-lg-3 product-item" data-category="pies">
+              <div class="card">
+                <img
+                  src="https://images.pexels.com/photos/6210747/pexels-photo-6210747.jpeg?auto=compress&cs=tinysrgb&w=400"
+                  class="card-img-top"
+                  alt="Lemon Tart"
+                />
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">Lemon Tart</h5>
+                  <p class="card-text text-muted">
+                    Tangy lemon custard in buttery pastry shell
+                  </p>
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-3"
+                  >
+                    <span class="price">$16.99</span>
+                    <span class="badge">Pies & Tarts</span>
+                  </div>
+                  <button
+                    class="btn btn-primary mt-auto"
+                    onclick="addToCart('Lemon Tart', 16.99)"
+                  >
+                    <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 9 -->
+            <div class="col-md-6 col-lg-3 product-item" data-category="breads">
+              <div class="card">
+                <img
+                  src="https://images.pexels.com/photos/209403/pexels-photo-209403.jpeg?auto=compress&cs=tinysrgb&w=400"
+                  class="card-img-top"
+                  alt="Whole Wheat"
+                />
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">Whole Wheat Loaf</h5>
+                  <p class="card-text text-muted">
+                    Healthy whole wheat bread perfect for sandwiches
+                  </p>
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-3"
+                  >
+                    <span class="price">$5.99</span>
+                    <span class="badge">Breads</span>
+                  </div>
+                  <button
+                    class="btn btn-primary mt-auto"
+                    onclick="addToCart('Whole Wheat Loaf', 5.99)"
+                  >
+                    <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 10 -->
+            <div
+              class="col-md-6 col-lg-3 product-item"
+              data-category="pastries"
+            >
+              <div class="card">
+                <img
+                  src="https://images.pexels.com/photos/8177283/pexels-photo-8177283.jpeg"
+                  class="card-img-top"
+                  alt="Cinnamon Roll"
+                />
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">Cinnamon Roll</h5>
+                  <p class="card-text text-muted">
+                    Soft cinnamon roll with cream cheese frosting
+                  </p>
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-3"
+                  >
+                    <span class="price">$5.50</span>
+                    <span class="badge">Pastries</span>
+                  </div>
+                  <button
+                    class="btn btn-primary mt-auto"
+                    onclick="addToCart('Cinnamon Roll', 5.5)"
+                  >
+                    <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 11 -->
+            <div
+              class="col-md-6 col-lg-3 product-item"
+              data-category="desserts"
+            >
+              <div class="card">
+                <img
+                  src="https://images.pexels.com/photos/2067396/pexels-photo-2067396.jpeg?auto=compress&cs=tinysrgb&w=400"
+                  class="card-img-top"
+                  alt="Cheesecake"
+                />
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">Classic Cheesecake</h5>
+                  <p class="card-text text-muted">
+                    Creamy New York style cheesecake
+                  </p>
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-3"
+                  >
+                    <span class="price">$28.99</span>
+                    <span class="badge">Desserts</span>
+                  </div>
+                  <button
+                    class="btn btn-primary mt-auto"
+                    onclick="addToCart('Classic Cheesecake', 28.99)"
+                  >
+                    <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 12 -->
+            <div class="col-md-6 col-lg-3 product-item" data-category="pies">
+              <div class="card">
+                <img
+                  src="https://images.pexels.com/photos/6210958/pexels-photo-6210958.jpeg?auto=compress&cs=tinysrgb&w=400"
+                  class="card-img-top"
+                  alt="Pecan Pie"
+                />
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">Pecan Pie</h5>
+                  <p class="card-text text-muted">
+                    Sweet pecan pie with buttery crust
+                  </p>
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-3"
+                  >
+                    <span class="price">$20.99</span>
+                    <span class="badge">Pies & Tarts</span>
+                  </div>
+                  <button
+                    class="btn btn-primary mt-auto"
+                    onclick="addToCart('Pecan Pie', 20.99)"
+                  >
+                    <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast-notification" id="toast">
+      <strong
+        ><i class="fas fa-check-circle me-2" style="color: var(--secondary)"></i
+        ><span id="toast-message"></span
+      ></strong>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Add to cart function
+      function addToCart(itemName, price) {
+        const toast = document.getElementById("toast");
+        const toastMsg = document.getElementById("toast-message");
+        toastMsg.textContent = `${itemName} ($${price.toFixed(2)}) added to cart!`;
+        toast.classList.add("show");
+
+        setTimeout(() => {
+          toast.classList.remove("show");
+        }, 3000);
+      }
+
+      // Category filter functionality
+      const filterBtns = document.querySelectorAll(".filter-btn");
+      const productItems = document.querySelectorAll(".product-item");
+
+      filterBtns.forEach((btn) => {
+        btn.addEventListener("click", function () {
+          // Remove active class from all buttons
+          filterBtns.forEach((b) => b.classList.remove("active"));
+          // Add active class to clicked button
+          this.classList.add("active");
+
+          const filter = this.getAttribute("data-filter");
+
+          productItems.forEach((item) => {
+            if (filter === "all") {
+              item.style.display = "block";
+            } else {
+              if (item.getAttribute("data-category") === filter) {
+                item.style.display = "block";
+              } else {
+                item.style.display = "none";
+              }
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

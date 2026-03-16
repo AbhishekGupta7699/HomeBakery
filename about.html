@@ -1,0 +1,694 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sweet Crumbs Bakery | About Us</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --primary: #ff6b6b;
+        --secondary: #4ecdc4;
+        --accent: #ffd166;
+        --dark: #2d3047;
+        --light: #fbf2dd;
+        --text: #333333;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: var(--text);
+        background-color: var(--light);
+        padding-top: 96px;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Playfair Display", serif;
+        font-weight: 600;
+      }
+
+      .navbar-brand {
+        font-family: "Playfair Display", serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--dark) !important;
+      }
+
+      .nav-link {
+        color: var(--dark) !important;
+        font-weight: 500;
+      }
+
+      .nav-link.active,
+      .nav-link:hover {
+        color: var(--primary) !important;
+      }
+
+      .btn-primary-custom {
+        background-color: var(--primary);
+        border-color: var(--primary);
+        color: white;
+        padding: 12px 30px;
+        font-weight: 600;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary-custom:hover {
+        background-color: #ff5252;
+        border-color: #ff5252;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+      }
+
+      .btn-secondary-custom {
+        background-color: transparent;
+        border: 2px solid white;
+        color: white;
+        padding: 12px 30px;
+        font-weight: 600;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+      }
+
+      .btn-secondary-custom:hover {
+        background-color: white;
+        color: var(--dark);
+        transform: translateY(-2px);
+      }
+
+      .hero {
+        background:
+          linear-gradient(
+            120deg,
+            rgba(255, 107, 107, 0.9),
+            rgba(78, 205, 196, 0.9)
+          ),
+          url("https://images.unsplash.com/photo-1517433456452-f9633a875f6f?auto=format&fit=crop&w=1600&q=80")
+            center/cover;
+        color: white;
+        padding: 5rem 0;
+      }
+
+      .badge-accent {
+        background-color: var(--accent);
+        color: var(--dark);
+      }
+
+      .feature-card {
+        border: none;
+        background-color: white;
+        box-shadow: 0 12px 30px rgba(45, 48, 71, 0.1);
+        border-radius: 1.25rem;
+        height: 100%;
+      }
+
+      .stat-card {
+        background: var(--dark);
+        color: white;
+        border-radius: 1.25rem;
+        padding: 2rem;
+      }
+
+      .team-card {
+        border-radius: 1.25rem;
+        overflow: hidden;
+        border: none;
+        box-shadow: 0 12px 24px rgba(45, 48, 71, 0.08);
+      }
+
+      .footer {
+        background-color: var(--dark);
+        color: white;
+        padding: 80px 0 30px;
+      }
+
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: var(--accent);
+      }
+
+      .social-icons a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: white;
+        margin-right: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .social-icons a:hover {
+        background-color: var(--primary);
+        transform: translateY(-3px);
+      }
+
+      .copyright {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 20px;
+        margin-top: 40px;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .floating-animation {
+        animation: float 3s ease-in-out infinite;
+      }
+
+      .btn-primary {
+        background-color: var(--primary);
+        border-color: var(--primary);
+      }
+
+      .btn-primary:hover {
+        background-color: #ff5353;
+        border-color: #ff5353;
+      }
+
+      .team-card {
+        background-color: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 20px;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        height: 100%;
+      }
+
+      .team-card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
+        background-color: rgba(255, 255, 255, 0.12);
+      }
+
+      .team-card img {
+        transition: all 0.5s ease;
+        filter: grayscale(40%);
+      }
+
+      .team-card:hover img {
+        filter: grayscale(0%);
+        transform: scale(1.05);
+      }
+
+      .team-emoji {
+        position: absolute;
+        bottom: 16px;
+        left: 16px;
+        background: white;
+        color: var(--dark);
+        width: 52px;
+        height: 52px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        border-radius: 16px;
+        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.2);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm py-3"
+    >
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <i class="bi bi-basket2-fill me-2" style="color: var(--primary)"></i>
+          Artisan Bakery
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="products.html">Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="gallery.html">Gallery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#testimonials">Testimonials</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+          <a
+            href="https://www.ubereats.com"
+            target="_blank"
+            class="btn btn-primary-custom ms-lg-3 mt-3 mt-lg-0"
+          >
+            <i class="bi bi-bag-check me-2"></i>Order Now
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <section class="py-5" id="story">
+      <div class="container">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-6">
+            <h2 class="fw-bold">A story rooted in community.</h2>
+            <p class="mt-3">
+              Sweet Crumbs began as a tiny corner shop with one oven and a
+              dream. Today, we are still a neighborhood bakery, handcrafting
+              every loaf, tart, and cake with locally sourced ingredients and a
+              sprinkle of whimsy.
+            </p>
+            <div class="d-flex align-items-start gap-3 mt-4">
+              <div
+                class="p-3 rounded-circle"
+                style="background-color: var(--secondary)"
+              >
+                <span class="text-white fw-bold">25+</span>
+              </div>
+              <div>
+                <h5 class="mb-1">Years of oven-to-table goodness</h5>
+                <p class="mb-0">
+                  Our bakers rise before dawn to ensure you have the freshest
+                  pastries by breakfast.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="row g-3">
+              <div class="col-6">
+                <div class="stat-card text-center">
+                  <h3 class="fw-bold">120K</h3>
+                  <p class="mb-0">Happy customers</p>
+                </div>
+              </div>
+              <div class="col-6">
+                <div
+                  class="stat-card text-center"
+                  style="background-color: var(--secondary)"
+                >
+                  <h3 class="fw-bold">35</h3>
+                  <p class="mb-0">Signature bakes</p>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="stat-card" style="background-color: var(--primary)">
+                  <h3 class="fw-bold">98%</h3>
+                  <p class="mb-0">
+                    Eco-friendly sourcing with reusable packaging and seasonal
+                    ingredients.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5" id="values" style="background-color: white">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="fw-bold">Our values</h2>
+          <p class="text-muted">
+            We believe in honest baking, joyful service, and making every guest
+            feel at home.
+          </p>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card feature-card p-4">
+              <h5 class="fw-bold">Handcrafted daily</h5>
+              <p class="mb-0">
+                Every croissant is hand-laminated and every cake is decorated by
+                our pastry artists.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card feature-card p-4">
+              <h5 class="fw-bold">Seasonal ingredients</h5>
+              <p class="mb-0">
+                We partner with local farms to keep our menu vibrant, fresh, and
+                sustainable.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card feature-card p-4">
+              <h5 class="fw-bold">Community first</h5>
+              <p class="mb-0">
+                From donating bread to local shelters to hosting baking
+                workshops, we give back.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section
+      class="py-5"
+      style="background-color: var(--dark); color: white"
+      id="team"
+    >
+      <div class="container">
+        <div class="row align-items-start g-5">
+          <!-- Left Column -->
+          <div class="col-lg-4">
+            <div class="sticky-top" style="top: 110px">
+              <div
+                class="text-sm font-medium tracking-widest mb-3"
+                style="color: var(--secondary)"
+              >
+                MEET THE TEAM
+              </div>
+              <h2
+                class="display-5 fw-bold text-white"
+                style="line-height: 1.05"
+              >
+                The hands behind the bread
+              </h2>
+              <p class="mt-4 text-white-50" style="max-width: 280px">
+                Each baker brings their own story, technique, and signature
+                touch to the bakery.
+              </p>
+
+              <button
+                onclick="showAllTeam()"
+                id="team-btn"
+                class="mt-5 btn btn-outline-light d-flex align-items-center gap-3 px-5 py-3 rounded-pill border-2"
+              >
+                <span>SEE ENTIRE BAKING CREW</span>
+                <span class="fs-4">→</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Right Column - Team Grid -->
+          <div class="col-lg-8">
+            <div class="row g-4" id="team-grid">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5" id="visit" style="background-color: var(--accent)">
+      <div class="container">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-7">
+            <h2 class="fw-bold">Visit our bakery</h2>
+            <p>
+              Stop by for cozy seating, fresh aromas, and a rotating menu of
+              seasonal delights. We bake in small batches to ensure everything
+              tastes just out of the oven.
+            </p>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <strong>Hours:</strong> Mon - Sat: 7am - 7pm, Sun: 8am - 3pm
+              </li>
+              <li class="mb-2">
+                <strong>Location:</strong> 112 Maple Street, Brookside
+              </li>
+              <li class="mb-2"><strong>Phone:</strong> (555) 013-2024</li>
+            </ul>
+          </div>
+          <div class="col-lg-5">
+            <div class="p-4 bg-white rounded-4 shadow">
+              <h5 class="fw-bold">Subscribe for sweet updates</h5>
+              <p class="text-muted">
+                Get weekly menus, new flavor announcements, and special offers.
+              </p>
+              <form id="subscribeForm">
+                <div class="mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nameInput"
+                    placeholder="Your name"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="emailInput"
+                    placeholder="Email address"
+                    required
+                  />
+                </div>
+                <button type="submit" class="btn btn-primary w-100">
+                  Join the list
+                </button>
+                <p class="mt-3 small" id="formMessage"></p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 mb-4 mb-lg-0">
+            <h3 class="mb-3">
+              <i
+                class="bi bi-basket2-fill me-2"
+                style="color: var(--accent)"
+              ></i>
+              Artisan Bakery
+            </h3>
+            <p class="mb-4" style="color: rgba(255, 255, 255, 0.8)">
+              Freshly baked artisan breads, pastries, and desserts made with
+              love and the finest ingredients since 2010.
+            </p>
+            <div class="social-icons">
+              <a href="#"><i class="bi bi-facebook"></i></a>
+              <a href="#"><i class="bi bi-instagram"></i></a>
+              <a href="#"><i class="bi bi-twitter"></i></a>
+              <a href="#"><i class="bi bi-tiktok"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+            <h5 class="mb-3">Quick Links</h5>
+            <div class="footer-links">
+              <p><a href="#home">Home</a></p>
+              <p><a href="#products">Products</a></p>
+              <p><a href="#about">About Us</a></p>
+              <p><a href="#testimonials">Testimonials</a></p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+            <h5 class="mb-3">Order Through</h5>
+            <div class="footer-links">
+              <p>
+                <a href="https://www.ubereats.com" target="_blank">Uber Eats</a>
+              </p>
+              <p>
+                <a href="https://www.doordash.com" target="_blank">DoorDash</a>
+              </p>
+              <p>
+                <a href="https://www.grubhub.com" target="_blank">Grubhub</a>
+              </p>
+              <p><a href="tel:+15551234567">Call: (555) 123-4567</a></p>
+            </div>
+          </div>
+
+          <div class="col-lg-3">
+            <h5 class="mb-3">Visit Us</h5>
+            <div style="color: rgba(255, 255, 255, 0.8)">
+              <p class="mb-2">
+                <i class="bi bi-geo-alt me-2"></i>
+                123 Baker Street<br />
+                San Francisco, CA 94107
+              </p>
+              <p class="mb-2">
+                <i class="bi bi-clock me-2"></i>
+                Mon-Fri: 6am-8pm<br />
+                Sat-Sun: 7am-9pm
+              </p>
+              <p class="mb-0">
+                <i class="bi bi-envelope me-2"></i>
+                hello@artisanbakery.com
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="copyright">
+              <p class="mb-0">
+                &copy; 2026 Artisan Bakery. All rights reserved. | Designed for
+                the future of baking
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      const teamMembers = [
+        {
+          name: "Elena Moreau",
+          title: "Founder & Head Baker",
+          emoji: "🥖",
+          img: "https://picsum.photos/id/64/400/400",
+        },
+        {
+          name: "Marcus Rivera",
+          title: "Pastry Chef",
+          emoji: "🥐",
+          img: "https://picsum.photos/id/201/400/400",
+        },
+        {
+          name: "Priya Patel",
+          title: "Sourdough Specialist",
+          emoji: "🍞",
+          img: "https://picsum.photos/id/29/400/400",
+        },
+        {
+          name: "Liam Dubois",
+          title: "Croissant Master",
+          emoji: "🧈",
+          img: "https://picsum.photos/id/160/400/400",
+        },
+      ];
+
+      const extraTeamMembers = [
+        {
+          name: "Sophie Chen",
+          title: "Cake Decorator",
+          emoji: "🎂",
+          img: "https://picsum.photos/id/40/400/400",
+        },
+        {
+          name: "David Okafor",
+          title: "Morning Baker",
+          emoji: "🌅",
+          img: "https://picsum.photos/id/91/400/400",
+        },
+      ];
+
+      function buildCard(member) {
+        const col = document.createElement("div");
+        col.className = "col-md-6 col-lg-4";
+
+        const cardHTML = `
+        <div class="team-card h-100 position-relative">
+          <div class="position-relative">
+            <img src="${member.img}" class="img-fluid w-100" style="height: 280px; object-fit: cover;" alt="${member.name}">
+            <div class="team-emoji">${member.emoji}</div>
+          </div>
+          <div class="p-4">
+            <div class="fw-semibold fs-5 text-white">${member.name}</div>
+            <div class="text-white-50 small">${member.title}</div>
+          </div>
+        </div>
+      `;
+
+        col.innerHTML = cardHTML;
+        return col;
+      }
+
+      function populateTeam() {
+        const container = document.getElementById("team-grid");
+        container.innerHTML = "";
+
+        teamMembers.forEach((member) => {
+          const cardElement = buildCard(member);
+          container.appendChild(cardElement);
+        });
+      }
+
+      function showAllTeam() {
+        const container = document.getElementById("team-grid");
+        const btn = document.getElementById("team-btn");
+
+        extraTeamMembers.forEach((member) => {
+          const cardElement = buildCard(member);
+          container.appendChild(cardElement);
+        });
+
+        btn.disabled = true;
+        btn.style.opacity = "0.4";
+        btn.innerHTML = `<span>ENTIRE CREW LOADED ✓</span>`;
+      }
+
+      populateTeam();
+
+      const form = document.getElementById("subscribeForm");
+      const formMessage = document.getElementById("formMessage");
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const name = document.getElementById("nameInput").value.trim();
+        const email = document.getElementById("emailInput").value.trim();
+
+        if (!name || !email) {
+          formMessage.textContent =
+            "Please enter your name and email to subscribe.";
+          formMessage.style.color = "var(--primary)";
+          return;
+        }
+
+        formMessage.textContent = `Thanks, ${name}! You are on the list.`;
+        formMessage.style.color = "var(--dark)";
+        form.reset();
+      });
+    </script>
+  </body>
+</html>
