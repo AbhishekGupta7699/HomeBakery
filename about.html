@@ -783,25 +783,34 @@
         id="feedbackToggle"
         class="feedback-toggle-checkbox"
       />
-
       <!-- Feedback Form Panel -->
       <div class="feedback-panel">
         <div class="feedback-card position-relative">
           <h1 class="feedback-title"><span>Send Feedback</span></h1>
+          <form action="https://formspree.io/f/xdawwaly" method="POST">
+            <!-- Hidden mood input -->
+            <input
+              type="hidden"
+              name="mood"
+              id="moodInput"
+              value="Not selected"
+            />
 
-          <form action="https://formspree.io/f/xdawwaly" method="post">
             <!-- Email input -->
             <div class="mb-2">
               <input
                 type="email"
+                name="email"
                 class="feedback-input"
                 placeholder="Your email..."
                 required
               />
             </div>
+
             <!-- Textarea -->
             <div class="mb-2">
               <textarea
+                name="message"
                 class="feedback-textarea"
                 placeholder="Your feedback..."
               ></textarea>
@@ -811,7 +820,12 @@
             <div class="row g-2 align-items-center">
               <!-- Happy emoji -->
               <div class="col-2">
-                <button type="button" class="feedback-emoji-btn" title="Happy">
+                <button
+                  type="button"
+                  class="feedback-emoji-btn"
+                  title="Happy"
+                  onclick="selectMood('Happy', this)"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="20px"
@@ -823,10 +837,14 @@
                   </svg>
                 </button>
               </div>
-
               <!-- Sad emoji -->
               <div class="col-2">
-                <button type="button" class="feedback-emoji-btn" title="Sad">
+                <button
+                  type="button"
+                  class="feedback-emoji-btn"
+                  title="Sad"
+                  onclick="selectMood('Sad', this)"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="20px"
@@ -838,10 +856,8 @@
                   </svg>
                 </button>
               </div>
-
               <!-- Spacer -->
               <div class="col-4"></div>
-
               <!-- Send button -->
               <div class="col-4">
                 <button type="submit" class="feedback-send-btn w-100">
@@ -871,14 +887,12 @@
           </form>
         </div>
       </div>
-
       <!-- Floating Toggle Button -->
       <label
         for="feedbackToggle"
         class="feedback-toggle-btn"
         title="Send Feedback"
       >
-        <!-- Chat icon (shown when closed) -->
         <svg
           class="icon-chat"
           xmlns="http://www.w3.org/2000/svg"
@@ -888,7 +902,6 @@
             d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12zM7 9h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z"
           />
         </svg>
-        <!-- Close icon (shown when open) -->
         <svg
           class="icon-close"
           xmlns="http://www.w3.org/2000/svg"
